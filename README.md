@@ -1,33 +1,25 @@
-<p>
-  This package allow you to compose/style Svelte/Meteor Login code as usual, and
-  all the heavy lifting of credential varifications, password resets, and
-  signups is handled for you behind the scenes. Just pick and arrange your
-  pieces. Below are three very different implementations using all the same
-  pieces to give you an idea of the versatlity.
-</p>
-<ul>
-  <li>
-    There are Links <LoginLink /> <LogoutLink /> <SignUpLink/> and <ForgotLink/>
-    <br />
-    These links have optional setting prop of "hideWhenShowing", when set true
-    this hides the link if the corresponding form is showing (Like in Navbar
-    example). These links could easily be changed to buttons.
-  </li>
-  <li>
-    There are Forms <LoginForm /> <SignUpForm /> <ForgotForm> as well as an informations <Message />
-    <br />
+This package allow you to compose/style Svelte/Meteor Login code as usual, and all the heavy lifting of credential varifications, password resets, and  signups is handled for you behind the scenes. Just pick and arrange your  pieces. Below are three very different implementations using all the same  pieces to give you an idea of the versatlity.
+
+* There are Links ```<LoginLink /> <LogoutLink /> <SignUpLink/>``` and ```<ForgotLink/>```
+
+These links have optional setting prop of "hideWhenShowing", when set true this hides the link if the corresponding form is showing (Like in Navbar example). These links could easily be changed to buttons.
+
+ *  There are Forms ```<LoginForm /> <SignUpForm /> <ForgotForm>``` as well as an informations ```<Message />```
+
     These forms have optional settings props of "showAlways" (like in Cards
     example), or "showInitially" (LoginForm in Example #2 - Single Card)
-  </li>
-  <li>
-    There are Methods showlogin(), showforgot(), showsignup(), handleLogin(callback, message), handleForgot(callback, message), handleSigUp(callback, message) and handleLogout(callback, message)
-    <br />
-    The callback and message are optional parameters. Callback runs after the
-    account transaction is done, and message updates <Message />.
-  </li>
-</ul>
-Here is a Simple Example
+
+  * There are Methods ```showlogin(), showforgot(), showsignup(), handleLogin (callback, message), handleForgot(callback, message), handleSigUp(callback, message)``` and ```handleLogout(callback, message)```
+  
+  The callback and message are optional parameters. Callback runs after the account transaction is done, and message updates ```<Message />```.
+  
+Here is a some simple example code
+
 ```
+import { Message, LoginForm, ForgotForm, SignupForm, LoginLink, LogoutLink, SignUpLink, ForgotLink } from "./Account/userStore.js";
+import { user } from "./Account/userStore.js";
+const { subscribe, selection, showlogin, showsignup, showforgot, handleLogin, handleForgot, handleSignup, handleLogout } = user;
+
 <LoginLink>
   <a href="#0" on:click={showlogin}>Login</a>
 </LoginLink>
