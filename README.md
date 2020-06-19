@@ -7,27 +7,27 @@
 </p>
 <ul>
   <li>
-    There are Links {'<LoginLink /> <LogoutLink /> <SignUpLink/> and <ForgotLink/>'}
+    There are Links <LoginLink /> <LogoutLink /> <SignUpLink/> and <ForgotLink/>
     <br />
     These links have optional setting prop of "hideWhenShowing", when set true
     this hides the link if the corresponding form is showing (Like in Navbar
     example). These links could easily be changed to buttons.
   </li>
   <li>
-    There are Forms {'<LoginForm /> <SignUpForm /> <ForgotForm> as well as an informations <Message />'}
+    There are Forms <LoginForm /> <SignUpForm /> <ForgotForm> as well as an informations <Message />
     <br />
     These forms have optional settings props of "showAlways" (like in Cards
     example), or "showInitially" (LoginForm in Example #2 - Single Card)
   </li>
   <li>
-    There are Methods {'showlogin(), showforgot(), showsignup(), handleLogin(callback, message), handleForgot(callback, message), handleSigUp(callback, message) and handleLogout(callback, message)'}
+    There are Methods showlogin(), showforgot(), showsignup(), handleLogin(callback, message), handleForgot(callback, message), handleSigUp(callback, message) and handleLogout(callback, message)
     <br />
     The callback and message are optional parameters. Callback runs after the
-    account transaction is done, and message updates {'<Message />'}.
+    account transaction is done, and message updates <Message />.
   </li>
 </ul>
 Here is a Simple Example
-```js
+```
 <LoginLink>
   <a href="#0" on:click={showlogin}>Login</a>
 </LoginLink>
