@@ -9,13 +9,13 @@ These links have optional setting prop of "hideWhenShowing", when set true this 
     These forms have optional settings props of "showAlways" (like in Cards
     example), or "showInitially" (LoginForm in Example #2 - Single Card)
 
-  * There are Methods ```showlogin(), showforgot(), showsignup(), handleLogin (callback, message), handleForgot(callback, message), handleSigUp(callback, message)``` and ```handleLogout(callback, message)```
+  * There are Methods ```showlogin(), showforgot(), showsignup(), handleLogin(callback, message), handleForgot(callback, message), handleSigUp(callback, message)``` and ```handleLogout(callback, message)```
   
   The callback and message are optional parameters. Callback runs after the account transaction is done, and message updates ```<Message />```.
   
 Here is a some simple example code
 
-```
+```js
 import { Message, LoginForm, ForgotForm, SignupForm, LoginLink, LogoutLink, SignUpLink, ForgotLink } from "./Account/userStore.js";
 import { user } from "./Account/userStore.js";
 const { subscribe, selection, showlogin, showsignup, showforgot, handleLogin, handleForgot, handleSignup, handleLogout } = user;
