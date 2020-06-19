@@ -1,4 +1,4 @@
-This package allow you to compose/style Svelte/Meteor Login code as usual, and all the heavy lifting of credential varifications, password resets, and  signups is handled for you behind the scenes. Just pick and arrange your  pieces. Below are three very different implementations using all the same  pieces to give you an idea of the versatlity.
+This package allow you to compose/style Svelte/Meteor Login code as usual, and all the heavy lifting of credential varifications, password resets, and  signups is handled for you behind the scenes. Just pick and arrange your pieces. 
 
 * There are Links ```<LoginLink /> <LogoutLink /> <SignUpLink/>``` and ```<ForgotLink/>```
 
