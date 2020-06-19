@@ -32,7 +32,7 @@ function createUser() {
 		showlogin: () => update(prior => ({ ...prior, selection: prior.selection === "login" ? "" : "login" })),
 		showforgot: () => update(prior => ({ ...prior, selection: prior.selection === "forgot" ? "" : "forgot" })),
 		showsignup: () => update(prior => ({ ...prior, selection: prior.selection === "signup" ? "" : "signup"})),
-		handleLogin: (newMessage) => update(prior => {
+		handleLogin: (cb = "", newMessage = "") => update(prior => {
 			// 			 Meteor.loginWithPassword(prior.email, prior.password, err => {
 			//       if (!err) {
 			//         return {...prior, statusLogin: true }
@@ -41,7 +41,7 @@ function createUser() {
 			//     	});
 			return { ...prior, statusLogin: true, message: newMessage ? newMessage : prior.message }
 		}),
-		handleSignup: (newMessage) => update(prior => {
+		handleSignup: (cb = "", newMessage = "") => update(prior => {
 			// 			Accounts.createUser({ prior.password, prior.email },
 			//       err => {
 			//         if (!err) {
@@ -50,14 +50,19 @@ function createUser() {
 			//				  return {...prior, message: err.reason };			
 			//       }
 			//     )
+			// remove below when Meteor dropped in
+			if (cb) cb();
 			return { ...prior, message: newMessage ? newMessage : prior.message }
 		}),
-		handleForgot: (newMessage) => update(prior => {
+		handleForgot: (cb = "", newMessage = "") => update(prior => {
 			console.log("drop in Meteor Forgot");
+			if (cb) cb();
+			// remove below when Meteor dropped in
 			return { ...prior, message: newMessage ? newMessage : prior.message }
 		}),
-		handleLogout: (newMessage) => update(prior => {
+		handleLogout: (cb = "", newMessage = "") => update(prior => {
 				// Meteor.logout();
+				if (cb) cb();
 				return { ...prior, statusLogin: false, password: "", selection: "", message: newMessage ? newMessage : prior.message }
 		})			
 	}

@@ -99,10 +99,16 @@
     example). These links could easily be changed to buttons.
   </li>
   <li>
-    There are forms {'<LoginForm /> <SignUpForm /> <ForgotForm> as well as an informations <Message />'}
+    There are Forms {'<LoginForm /> <SignUpForm /> <ForgotForm> as well as an informations <Message />'}
     <br />
     These forms have optional settings props of "showAlways" (like in Cards
     example), or "showInitially" (LoginForm in Example #2 - Single Card)
+  </li>
+  <li>
+    There are Methods {'showlogin(), showforgot(), showsignup(), handleLogin(callback, message), handleForgot(callback, message), handleSigUp(callback, message) and handleLogout(callback, message)'}
+    <br />
+    The callback and message are optional parameters. Callback runs after the
+    account transaction is done, and message updates {'<Message />'}.
   </li>
 </ul>
 <div style="margin: 5px;">
@@ -275,7 +281,7 @@
           <span>Password</span>
           <input type="password" bind:value={$user.password} />
           <button
-            on:click={() => handleLogin('You are now Logged in')}
+            on:click={() => handleLogin('', 'You are now Logged in')}
             disabled={!$user.email || !$user.password}>
             Login
           </button>
@@ -290,7 +296,7 @@
           <span>Password</span>
           <input type="password" bind:value={$user.password} />
           <button
-            on:click={() => handleSignup('You are Signed Up.')}
+            on:click={() => handleSignup('', 'You are Signed Up.')}
             disabled={!$user.email || !$user.password}>
             Signup
           </button>
@@ -303,7 +309,7 @@
           <span>Email</span>
           <input type="email" bind:value={$user.email} />
           <button
-            on:click={() => handleForgot('Check you Email for a Password Reset.')}
+            on:click={() => handleForgot('', 'Check you Email for a Password Reset.')}
             disabled={!$user.email}>
             Request Password
           </button>
