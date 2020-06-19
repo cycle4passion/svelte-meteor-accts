@@ -2,12 +2,12 @@ This package allow you to compose/style Svelte/Meteor Login code as usual, and a
 
 * There are Links ```<LoginLink /> <LogoutLink /> <SignUpLink/>``` and ```<ForgotLink/>```
 
-These links have optional setting prop of "hideWhenShowing", when set true this hides the link if the corresponding form is showing (Like in Navbar example). These links could easily be changed to buttons.
+These links have optional setting prop of "hideWhenShowing", when set true this hides the link if the corresponding form is showing. These links could easily be changed to buttons.
 
  *  There are Forms ```<LoginForm /> <SignUpForm /> <ForgotForm>``` as well as an informations ```<Message />```
 
     These forms have optional settings props of "showAlways" (like in Cards
-    example), or "showInitially" (LoginForm in Example #2 - Single Card)
+    example), or "showInitially"
 
   * There are Methods ```showlogin(), showforgot(), showsignup(), handleLogin(callback, message), handleForgot(callback, message), handleSigUp(callback, message)``` and ```handleLogout(callback, message)```
   
