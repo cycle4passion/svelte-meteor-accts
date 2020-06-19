@@ -204,7 +204,9 @@
 <!-- --------------------------------------- SINGLE CARD -------------------------------------------- -->
 {#if choice === 'Example #2 - Card'}
   <p>Example #2 - showing a single card where links change the form</p>
-  <div id="card" style="margin-top: 20px">
+  <div
+    id="card"
+    style="margin-top: 20p; display: flex; flex-direction: column;">
     <div class="message" style="display: flex; justify-content: center;">
       <Message />
     </div>
@@ -223,45 +225,48 @@
         <a href="#0" on:click={showsignup}>Sign-Up</a>
       </SignUpLink>
     </div>
+
+    <LoginForm showInitially="true">
+      <div class="form" style="margin: 5px auto;">
+        <span class="status">Enter Email and Password to Login.</span>
+        <span>Email</span>
+        <input type="email" bind:value={$user.email} />
+        <span>Password</span>
+        <input type="password" bind:value={$user.password} />
+        <button
+          on:click={handleLogin}
+          disabled={!$user.email || !$user.password}>
+          Login
+        </button>
+      </div>
+    </LoginForm>
+
+    <SignupForm>
+      <div class="form" style="margin: 5px auto;">
+        <span class="status">Enter Email and Password to Signup.</span>
+        <span>Email</span>
+        <input type="email" bind:value={$user.email} />
+        <span>Password</span>
+        <input type="password" bind:value={$user.password} />
+        <button
+          on:click={handleSignup}
+          disabled={!$user.email || !$user.password}>
+          Signup
+        </button>
+      </div>
+    </SignupForm>
+
+    <ForgotForm>
+      <div class="form" style="margin: 5px auto;">
+        <span class="status">Enter Email to Retrieve Password.</span>
+        <span>Email</span>
+        <input type="email" bind:value={$user.email} />
+        <button on:click={handleForgot} disabled={!$user.email}>
+          Request Password
+        </button>
+      </div>
+    </ForgotForm>
   </div>
-  <LoginForm showInitially="true">
-    <div class="form">
-      <span class="status">Enter Email and Password to Login.</span>
-      <span>Email</span>
-      <input type="email" bind:value={$user.email} />
-      <span>Password</span>
-      <input type="password" bind:value={$user.password} />
-      <button on:click={handleLogin} disabled={!$user.email || !$user.password}>
-        Login
-      </button>
-    </div>
-  </LoginForm>
-
-  <SignupForm>
-    <div class="form">
-      <span class="status">Enter Email and Password to Signup.</span>
-      <span>Email</span>
-      <input type="email" bind:value={$user.email} />
-      <span>Password</span>
-      <input type="password" bind:value={$user.password} />
-      <button
-        on:click={handleSignup}
-        disabled={!$user.email || !$user.password}>
-        Signup
-      </button>
-    </div>
-  </SignupForm>
-
-  <ForgotForm>
-    <div class="form">
-      <span class="status">Enter Email to Retrieve Password.</span>
-      <span>Email</span>
-      <input type="email" bind:value={$user.email} />
-      <button on:click={handleForgot} disabled={!$user.email}>
-        Request Password
-      </button>
-    </div>
-  </ForgotForm>
 {/if}
 <!-- --------------------------------------- CARDS -------------------------------------------- -->
 {#if choice === 'Example #3 - MutipleCard/Full Page'}
