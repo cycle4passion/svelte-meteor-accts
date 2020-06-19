@@ -1,93 +1,82 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
-
----
-
-# svelte app
-
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
-
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
-
-## Get started
-
-Install the dependencies...
-
-```bash
-cd svelte-app
-npm install
-```
-
-...then start [Rollup](https://rollupjs.org):
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
-
-
-## Building and running in production mode
-
-To create an optimised version of the app:
-
-```bash
-npm run build
-```
-
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
-
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
+<p>
+  This package allow you to compose/style Svelte/Meteor Login code as usual, and
+  all the heavy lifting of credential varifications, password resets, and
+  signups is handled for you behind the scenes. Just pick and arrange your
+  pieces. Below are three very different implementations using all the same
+  pieces to give you an idea of the versatlity.
+</p>
+<ul>
+  <li>
+    There are Links {'<LoginLink /> <LogoutLink /> <SignUpLink/> and <ForgotLink/>'}
+    <br />
+    These links have optional setting prop of "hideWhenShowing", when set true
+    this hides the link if the corresponding form is showing (Like in Navbar
+    example). These links could easily be changed to buttons.
+  </li>
+  <li>
+    There are Forms {'<LoginForm /> <SignUpForm /> <ForgotForm> as well as an informations <Message />'}
+    <br />
+    These forms have optional settings props of "showAlways" (like in Cards
+    example), or "showInitially" (LoginForm in Example #2 - Single Card)
+  </li>
+  <li>
+    There are Methods {'showlogin(), showforgot(), showsignup(), handleLogin(callback, message), handleForgot(callback, message), handleSigUp(callback, message) and handleLogout(callback, message)'}
+    <br />
+    The callback and message are optional parameters. Callback runs after the
+    account transaction is done, and message updates {'<Message />'}.
+  </li>
+</ul>
+Here is a Simple Example
 ```js
-"start": "sirv public --single"
-```
+<LoginLink>
+  <a href="#0" on:click={showlogin}>Login</a>
+</LoginLink>
+<LogoutLink>
+  {$user.email}
+  <a href="#0" on:click={handleLogout}>Logout</a>
+</LogoutLink>
+<ForgotLink>
+  <a href="#0" on:click={showforgot}>Forgot Password</a>
+</ForgotLink>
+<SignUpLink>
+  <a href="#0" on:click={showsignup}>Sign-Up</a>
+</SignUpLink>
+<LoginForm showInitially="true">
+  <div>
+    <span class="status">Enter Email and Password to Login.</span>
+    <span>Email</span>
+    <input type="email" bind:value={$user.email} />
+    <span>Password</span>
+    <input type="password" bind:value={$user.password} />
+    <button on:click={handleLogin} disabled={!$user.email || !$user.password}>
+      Login
+    </button>
+  </div>
+</LoginForm>
 
+<SignupForm>
+  <div>
+    <span>Enter Email and Password to Signup.</span>
+    <span>Email</span>
+    <input type="email" bind:value={$user.email} />
+    <span>Password</span>
+    <input type="password" bind:value={$user.password} />
+    <button
+      on:click={handleSignup}
+      disabled={!$user.email || !$user.password}>
+      Signup
+    </button>
+  </div>
+</SignupForm>
 
-## Deploying to the web
-
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-now deploy --name my-project
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
+<ForgotForm>
+  <div>
+    <span>Enter Email to Retrieve Password.</span>
+    <span>Email</span>
+    <input type="email" bind:value={$user.email} />
+    <button on:click={handleForgot} disabled={!$user.email}>
+      Request Password
+    </button>
+  </div>
+</ForgotForm>
 ```
