@@ -15,6 +15,8 @@ These links have optional setting prop of "hideWhenShowing", when set true this 
   
   The callback and message are optional parameters. Callback runs after the account transaction is done, and message updates ```<Message />```.
 
+<h3>CodeSandbox not working, not sure why?</h3>
+
 [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://githubbox.com/cycle4passion/svelte-meteor-accts)
   
 Here is a simple example code
