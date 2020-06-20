@@ -1,10 +1,12 @@
-This package allow you to compose/style Svelte/Meteor Login code as usual, and all the heavy lifting of credential varifications, password resets, and  signups is handled for you behind the scenes. Just pick and arrange your pieces. 
+This package allow you to compose/style Svelte/Meteor Login code as usual, and all the heavy lifting of credential verifications, password resets, and signups are handled for you behind the scenes. Just pick and arrange your pieces. 
+
+Credit: Scott Tolinski [LevelUpTutortials](https://www.leveluptutorials.com/) and [svelte-accounts-ui](https://github.com/leveluptuts/svelte-accounts-ui/blob/master/svelte-accounts-ui.js) and [Youtube Series](https://www.youtube.com/watch?v=Qc4dglMX7fw&t=3s)
 
 * There are Links ```<LoginLink /> <LogoutLink /> <SignUpLink/>``` and ```<ForgotLink/>```
 
 These links have optional setting prop of "hideWhenShowing", when set true this hides the link if the corresponding form is showing. These links could easily be changed to buttons.
 
- *  There are Forms ```<LoginForm /> <SignUpForm /> <ForgotForm>``` as well as an informations ```<Message />```
+ *  There are Forms ```<LoginForm /> <SignUpForm /> <ForgotForm>``` as well as an information ```<Message />```
 
     These forms have optional settings props of "showAlways" (like in Cards
     example), or "showInitially"
@@ -12,8 +14,10 @@ These links have optional setting prop of "hideWhenShowing", when set true this 
   * There are Methods ```showlogin(), showforgot(), showsignup(), handleLogin(callback, message), handleForgot(callback, message), handleSigUp(callback, message)``` and ```handleLogout(callback, message)```
   
   The callback and message are optional parameters. Callback runs after the account transaction is done, and message updates ```<Message />```.
+
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://githubbox.com/cycle4passion/svelte-meteor-accts)
   
-Here is a some simple example code
+Here is a simple example code
 
 ```js
 import { Message, LoginForm, ForgotForm, SignupForm, LoginLink, LogoutLink, SignUpLink, ForgotLink } from "./Account/userStore.js";
